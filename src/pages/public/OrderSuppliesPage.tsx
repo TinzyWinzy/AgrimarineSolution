@@ -64,39 +64,47 @@ export default function OrderSuppliesPage() {
           <p className="text-white/70 text-sm">Browse products and submit an enquiry. Prices shown are indicative.</p>
         </div>
       </section>
-      <section className="py-8 max-w-lg mx-auto px-4">
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
-          <Input label="Full name *" id="name" required />
-          <Input label="Phone *" id="phone" required />
-          <Input label="Email" id="email" type="email" />
-          <Input label="Location" id="location" />
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-navy-800">Items</label>
-            {items.map((item, i) => (
-              <div key={i} className="flex gap-2 items-start">
-                <Select id={`product-${i}`} options={products.map(p => ({ value: p.name, label: `${p.name} (${p.unit})` }))} placeholder="Select product" value={item.product} onChange={e => updateItem(i, 'product', e.target.value)} className="flex-1" />
-                <Input type="number" placeholder="Qty" value={item.quantity || ''} onChange={e => updateItem(i, 'quantity', e.target.value)} className="w-20" />
-                {items.length > 1 && (
-                  <button type="button" onClick={() => removeItem(i)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg">
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                )}
-              </div>
-            ))}
-            <button type="button" onClick={addItem} className="flex items-center gap-1 text-sm text-aqua-600 hover:text-aqua-500">
-              <Plus className="h-4 w-4" /> Add item
-            </button>
+      <section className="py-8 max-w-5xl mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="rounded-xl overflow-hidden border border-gray-200">
+            <div className="h-80 bg-cover bg-center" style={{ backgroundImage: "url('/images/packages.jpg')" }} />
+            <div className="p-4 bg-white">
+              <p className="text-sm text-gray-600">Quality fingerlings, feeds, and aquaculture supplies delivered to your farm.</p>
+            </div>
           </div>
+          <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
+            <Input label="Full name *" id="name" required />
+            <Input label="Phone *" id="phone" required />
+            <Input label="Email" id="email" type="email" />
+            <Input label="Location" id="location" />
 
-          <Select label="Collection or delivery" id="method" options={[
-            { value: 'Collection', label: 'I will collect' },
-            { value: 'Delivery enquiry', label: 'I need delivery' },
-          ]} />
-          <TextArea label="Notes" id="notes" />
-          <p className="text-xs text-gray-400">Prices shown are demonstration data for evaluation purposes.</p>
-          <Button type="submit" className="w-full">Submit Enquiry</Button>
-        </form>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-navy-800">Items</label>
+              {items.map((item, i) => (
+                <div key={i} className="flex gap-2 items-start">
+                  <Select id={`product-${i}`} options={products.map(p => ({ value: p.name, label: `${p.name} (${p.unit})` }))} placeholder="Select product" value={item.product} onChange={e => updateItem(i, 'product', e.target.value)} className="flex-1" />
+                  <Input type="number" placeholder="Qty" value={item.quantity || ''} onChange={e => updateItem(i, 'quantity', e.target.value)} className="w-20" />
+                  {items.length > 1 && (
+                    <button type="button" onClick={() => removeItem(i)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg">
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+              ))}
+              <button type="button" onClick={addItem} className="flex items-center gap-1 text-sm text-aqua-600 hover:text-aqua-500">
+                <Plus className="h-4 w-4" /> Add item
+              </button>
+            </div>
+
+            <Select label="Collection or delivery" id="method" options={[
+              { value: 'Collection', label: 'I will collect' },
+              { value: 'Delivery enquiry', label: 'I need delivery' },
+            ]} />
+            <TextArea label="Notes" id="notes" />
+            <p className="text-xs text-gray-400">Prices shown are demonstration data for evaluation purposes.</p>
+            <Button type="submit" className="w-full">Submit Enquiry</Button>
+          </form>
+        </div>
       </section>
     </div>
   )

@@ -12,7 +12,7 @@ export default function ContactPage() {
       </section>
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-navy-900">Get in Touch</h2>
               <div className="space-y-4">
@@ -42,17 +42,14 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-            <div className="bg-surface rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-navy-900 mb-4">Alternatively</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Use our online forms to submit requests directly:
-              </p>
-              <div className="space-y-2">
-                <a href="/sell-fish" className="block px-4 py-2 bg-aqua-500 text-white text-sm rounded-lg text-center hover:bg-aqua-400 transition-colors">Sell Your Fish</a>
-                <a href="/request-quote" className="block px-4 py-2 border border-aqua-500 text-aqua-600 text-sm rounded-lg text-center hover:bg-aqua-50 transition-colors">Request a Quote</a>
-                <a href="/book-training" className="block px-4 py-2 border border-aqua-500 text-aqua-600 text-sm rounded-lg text-center hover:bg-aqua-50 transition-colors">Book Training</a>
-              </div>
+            <div className="rounded-xl overflow-hidden border border-gray-200">
+              <div className="h-80 bg-cover bg-center" style={{ backgroundImage: "url('/images/1.jpg')" }} />
             </div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4 mt-8">
+            <a href="/sell-fish" className="block px-4 py-3 bg-aqua-500 text-white text-sm rounded-lg text-center hover:bg-aqua-400 transition-colors">Sell Your Fish</a>
+            <a href="/request-quote" className="block px-4 py-3 border border-aqua-500 text-aqua-600 text-sm rounded-lg text-center hover:bg-aqua-50 transition-colors">Request a Quote</a>
+            <a href="/book-training" className="block px-4 py-3 border border-aqua-500 text-aqua-600 text-sm rounded-lg text-center hover:bg-aqua-50 transition-colors">Book Training</a>
           </div>
         </div>
       </section>

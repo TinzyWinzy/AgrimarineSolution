@@ -3,10 +3,10 @@ import { ArrowRight, Shield, DollarSign, Truck, Users, CheckCircle, Droplets, Fi
 import { env } from '@/config/env'
 
 const services = [
-  { icon: Droplets, title: 'Pond Design & Construction', desc: 'Professional pond construction for commercial and smallholder farms.' },
-  { icon: Shield, title: 'Dam Liners', desc: 'High-quality HDPE dam liners for water conservation.' },
-  { icon: Fish, title: 'Nile Tilapia Fingerlings', desc: 'Quality fingerlings from reputable breeding stock.' },
-  { icon: Truck, title: 'Fish Buy-Back', desc: 'Guaranteed market for your harvest at competitive prices.' },
+  { icon: Droplets, title: 'Pond Design & Construction', desc: 'Professional pond construction for commercial and smallholder farms.', img: '/images/pool1.jpg' },
+  { icon: Shield, title: 'Dam Liners', desc: 'High-quality HDPE dam liners for water conservation.', img: '/images/damliners.jpg' },
+  { icon: Fish, title: 'Nile Tilapia Fingerlings', desc: 'Quality fingerlings from reputable breeding stock.', img: '/images/fish1.jpg' },
+  { icon: Truck, title: 'Fish Buy-Back', desc: 'Guaranteed market for your harvest at competitive prices.', img: '/images/fishhand.jpg' },
 ]
 
 const process = [
@@ -28,6 +28,7 @@ export default function HomePage() {
     <div>
       <section className="relative bg-navy-900 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-navy-900/95 to-navy-900/80" />
+        <div className="absolute inset-0 bg-[url('/images/overviewhero.jpg')] bg-cover bg-center opacity-20" />
         <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32">
           <div className="max-w-2xl">
             <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
@@ -72,10 +73,13 @@ export default function HomePage() {
           <h2 className="text-2xl md:text-3xl font-bold text-navy-900 text-center mb-12">Our Services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((s) => (
-              <div key={s.title} className="p-6 rounded-xl border border-gray-200 hover:border-aqua-200 hover:shadow-md transition-all">
-                <s.icon className="h-10 w-10 text-aqua-500 mb-4" />
-                <h3 className="font-semibold text-navy-900 mb-2">{s.title}</h3>
-                <p className="text-sm text-gray-600">{s.desc}</p>
+              <div key={s.title} className="rounded-xl border border-gray-200 hover:border-aqua-200 hover:shadow-md transition-all overflow-hidden bg-white">
+                <div className="h-40 bg-cover bg-center" style={{ backgroundImage: `url(${s.img})` }} />
+                <div className="p-6">
+                  <s.icon className="h-8 w-8 text-aqua-500 mb-3" />
+                  <h3 className="font-semibold text-navy-900 mb-2">{s.title}</h3>
+                  <p className="text-sm text-gray-600">{s.desc}</p>
+                </div>
               </div>
             ))}
           </div>

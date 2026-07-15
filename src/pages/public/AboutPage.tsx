@@ -21,6 +21,9 @@ export default function AboutPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-xl overflow-hidden border border-gray-200">
+              <div className="h-80 bg-cover bg-center" style={{ backgroundImage: "url('/images/1.jpg')" }} />
+            </div>
             <div>
               <h2 className="text-2xl font-bold text-navy-900 mb-4">Our Story</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
@@ -32,14 +35,26 @@ export default function AboutPage() {
                 Bindura, and beyond. Our team brings years of practical aquaculture experience to every partnership.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {values.map((v) => (
-                <div key={v.title} className="p-4 bg-surface rounded-xl border border-gray-200">
-                  <v.icon className="h-8 w-8 text-aqua-500 mb-2" />
-                  <h3 className="font-semibold text-navy-900 text-sm">{v.title}</h3>
-                  <p className="text-xs text-gray-500 mt-1">{v.desc}</p>
-                </div>
-              ))}
+          </div>
+        </div>
+      </section>
+      <section className="py-16 bg-surface">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-2xl font-bold text-navy-900 mb-6">Our Values</h2>
+              <div className="grid grid-cols-2 gap-4">
+                {values.map((v) => (
+                  <div key={v.title} className="p-4 bg-white rounded-xl border border-gray-200">
+                    <v.icon className="h-8 w-8 text-aqua-500 mb-2" />
+                    <h3 className="font-semibold text-navy-900 text-sm">{v.title}</h3>
+                    <p className="text-xs text-gray-500 mt-1">{v.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-gray-200">
+              <div className="h-80 bg-cover bg-center" style={{ backgroundImage: "url('/images/phmeter.jpg')" }} />
             </div>
           </div>
         </div>

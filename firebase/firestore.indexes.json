@@ -1,36 +1,6 @@
 {
   "indexes": [
     {
-      "collectionGroup": "fishSubmissions",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "status", "order": "ASCENDING" },
-        { "fieldPath": "createdAt", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "fishSubmissions",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "farmerPhone", "order": "ASCENDING" },
-        { "fieldPath": "createdAt", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "fishSubmissions",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "referenceNumber", "order": "ASCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "farmers",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "fullName", "order": "ASCENDING" }
-      ]
-    },
-    {
       "collectionGroup": "pricingRules",
       "queryScope": "COLLECTION",
       "fields": [
@@ -51,6 +21,14 @@
       "queryScope": "COLLECTION",
       "fields": [
         { "fieldPath": "userId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "fishSubmissions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "farmerPhone", "order": "ASCENDING" },
         { "fieldPath": "createdAt", "order": "DESCENDING" }
       ]
     }
