@@ -9,6 +9,7 @@ import { useAppStore } from '@/stores/appStore'
 import { Loader2 } from 'lucide-react'
 
 const HomePage = lazy(() => import('@/pages/public/HomePage'))
+
 const AboutPage = lazy(() => import('@/pages/public/AboutPage'))
 const ServicesPage = lazy(() => import('@/pages/public/ServicesPage'))
 const SellFishPage = lazy(() => import('@/pages/public/SellFishPage'))

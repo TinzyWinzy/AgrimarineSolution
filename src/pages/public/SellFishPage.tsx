@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { motion } from 'framer-motion'
 import { CheckCircle, Camera, X, MapPin, ChevronLeft, ChevronRight, WifiOff, RefreshCw, Loader2 } from 'lucide-react'
 import { fishSubmissionSchema, type FishSubmissionFormData } from '@/schemas/fishSubmission'
 import { useAppStore } from '@/stores/appStore'
@@ -298,10 +299,23 @@ export default function SellFishPage() {
 
   return (
     <div>
-      <section className="bg-navy-900 py-12">
-        <div className="max-w-3xl mx-auto px-4">
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Sell Your Fish</h1>
-          <p className="text-white/70 text-sm">Complete the form below and Agrimarine will review your submission.</p>
+      <section className="relative bg-navy-900 overflow-hidden py-16 md:py-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900" />
+        <motion.div
+          className="absolute top-10 right-20 w-64 h-64 rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(14,165,233,0.06), transparent 70%)' }}
+          animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <div className="relative max-w-3xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+          >
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Sell Your Fish</h1>
+            <p className="text-white/60 text-sm">Complete the form below and Agrimarine will review your submission.</p>
+          </motion.div>
         </div>
       </section>
       <section className="py-8 max-w-3xl mx-auto px-4">
@@ -332,7 +346,7 @@ export default function SellFishPage() {
 
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit as never)}>
-            <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-5">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm p-6 space-y-5">
               {step === 0 && (
                 <div className="space-y-4 animate-fade-in">
                   <h2 className="font-semibold text-navy-900">Farmer Information</h2>

@@ -16,6 +16,9 @@
   --color-green-600: #16a34a;
   --color-surface: #f8fafc;
   --color-surface-alt: #f1f5f9;
+  --color-glass: rgba(255, 255, 255, 0.15);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-glass-dark: rgba(10, 31, 68, 0.12);
 }
 
 html {
@@ -53,6 +56,97 @@ body {
 
 .animate-pulse-soft {
   animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.05); }
+  50% { transform: translate(-10px, 30px) scale(0.95); }
+  75% { transform: translate(-30px, -10px) scale(1.02); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.3); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+}
+
+.glass-dark {
+  background: var(--color-glass-dark);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(10, 31, 68, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.fluid-type-sm {
+  font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+}
+
+.fluid-type-base {
+  font-size: clamp(0.875rem, 0.8rem + 0.4vw, 1rem);
+}
+
+.fluid-type-lg {
+  font-size: clamp(1rem, 0.85rem + 0.75vw, 1.25rem);
+}
+
+.fluid-type-xl {
+  font-size: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+}
+
+.fluid-type-2xl {
+  font-size: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+}
+
+.fluid-type-3xl {
+  font-size: clamp(2rem, 1.25rem + 4vw, 4.5rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
