@@ -1,0 +1,83 @@
+rules_version = '2';
+
+function isAuthenticated() {
+  return request.auth != null;
+}
+
+function isAdmin() {
+  return isAuthenticated() && request.auth.token.role == 'administrator';
+}
+
+function isStaff() {
+  return isAuthenticated() && (request.auth.token.role in ['staff', 'administrator']);
+}
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Public submissions - anyone can create
+    match /fishSubmissions/{docId} {
+      allow create: if request.resource.data.status == 'New'
+                    && request.resource.data.createdBy == null;
+      allow read, update, delete: if isStaff();
+    }
+
+    match /serviceEnquiries/{docId} {
+      allow create: if true;
+      allow read, update, delete: if isStaff();
+    }
+
+    match /supplyRequests/{docId} {
+      allow create: if true;
+      allow read, update, delete: if isStaff();
+    }
+
+    match /trainingBookings/{docId} {
+      allow create: if true;
+      allow read, update, delete: if isStaff();
+    }
+
+    // Staff-protected collections
+    match /farmers/{docId} {
+      allow read, write: if isStaff();
+    }
+
+    match /pricingRules/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read, write: if isAdmin();
+      allow read, write: if request.auth.uid == userId;
+    }
+
+    match /notifications/{docId} {
+      allow read, write: if isStaff();
+    }
+
+    match /activityLogs/{docId} {
+      allow read: if isStaff();
+      allow create: if isStaff();
+    }
+
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /products/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /counters/{docId} {
+      allow read: if isStaff();
+      allow write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
